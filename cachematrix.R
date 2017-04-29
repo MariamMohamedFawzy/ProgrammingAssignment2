@@ -1,8 +1,6 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-require(MASS)
-
 ## Write a short comment describing this function
 #this function creates a matrix and caches its inverse
 makeCacheMatrix <- function(x = matrix()) {
@@ -15,8 +13,8 @@ makeCacheMatrix <- function(x = matrix()) {
   setInverse <- function(inv) m <<- inv
   getInverse <- function() m
   list(set = set, get = get,
-       setmean = setmean,
-       getmean = getmean)
+       setInverse = setInverse,
+       getInverse = getInverse)
 }
 
 
@@ -31,7 +29,7 @@ cacheSolve <- function(x, ...) {
     return(m)
   }
   data <- x$get()
-  m <- ginv(data)
+  m <- solve(data)
   x$setInverse(m)
   m
 }
